@@ -3,13 +3,18 @@ package com.study.springstudy.springmvc.chap03.controller;
 import com.study.springstudy.springmvc.chap03.dto.ScorePostDto;
 import com.study.springstudy.springmvc.chap03.entity.Score;
 import com.study.springstudy.springmvc.chap03.repository.ScoreJdbcRepository;
+import com.study.springstudy.springmvc.chap03.repository.ScoreRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
     # 요청 URL
@@ -30,13 +35,19 @@ import java.util.List;
 public class ScoreController {
 
     // 의존객체 설정
-    private ScoreJdbcRepository repository = new ScoreJdbcRepository();
+    private final ScoreRepository repository;
+
+    @Autowired
+    public ScoreController(ScoreRepository repository) {
+        this.repository = repository;
+    }
 
     @GetMapping("/list")
-    public String list(Model model) {
+    public String list(Model model, @RequestParam(defaultValue = "num") String sort) {
         System.out.println("/score/list : GET!");
 
-        List<Score> scoreList = repository.findAll();
+        List<Score> scoreList = repository.findAll(sort);
+
         model.addAttribute("sList", scoreList);
 
         return "score/score-list";
@@ -56,10 +67,12 @@ public class ScoreController {
         return "redirect:/score/list";
     }
 
-    @PostMapping("/remove")
-    public String remove() {
+    @GetMapping("/remove")
+    public String remove(long stuNum) {
         System.out.println("/score/remove : POST!");
-        return "";
+
+        repository.delete(stuNum);
+        return "redirect:/score/list";
     }
 
     @GetMapping("/detail")

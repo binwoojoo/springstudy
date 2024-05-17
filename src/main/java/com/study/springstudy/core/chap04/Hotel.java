@@ -14,6 +14,7 @@ package com.study.springstudy.core.chap04;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,7 +30,7 @@ public class Hotel {
 
 //     만약에 해당 클래스의 생성자가 단 한개뿐이라면 자동으로  @Autowired를 붙힘
     @Autowired
-    public Hotel(Restaurant restaurant, Chef headChef) {
+    public Hotel(@Qualifier("www") Restaurant restaurant, Chef headChef) {
         this.restaurant = restaurant;
         this.headChef = headChef;
     }
