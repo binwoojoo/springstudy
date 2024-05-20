@@ -16,7 +16,7 @@ public class ScoreSpringJdbcRepository implements ScoreRepository {
     @Override
     public boolean save(Score score) {
         String sql = "INSERT INTO tbl_score " +
-                "(board_no, kor, eng, math, total, average, grade) " +
+                "(stu_name, kor, eng, math, total, average, grade) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
         return template.update(sql, score.getStuName(), score.getKor()
                 , score.getEng(), score.getMath(), score.getTotal()
@@ -25,7 +25,7 @@ public class ScoreSpringJdbcRepository implements ScoreRepository {
 
     @Override
     public List<Score> findAll(String sort) {
-        String sql = "SELECT * FROM tbl_score "+ orderByStatement(sort);
+        String sql = "SELECT * FROM tbl_score " + orderByStatement(sort);
         return template.query(sql, (rs, n) -> new Score(rs));
     }
 
@@ -72,5 +72,15 @@ public class ScoreSpringJdbcRepository implements ScoreRepository {
                     rs.getInt("cnt")
             };
         }, stuNum);
+    }
+
+    @Override
+    public boolean updateScore(Score s) {
+        String sql = "UPDATE tbl_score " +
+                "SET kor = ?, eng = ?, math = ?, " +
+                "total = ?, average =?, grade =? " +
+                "WHERE stu_num = ?";
+        return template.update(sql, s.getKor(), s.getEng(), s.getMath()
+                , s.getTotal(), s.getAverage(), s.getGrade().toString(), s.getStuNum()) == 1;
     }
 }

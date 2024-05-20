@@ -17,10 +17,16 @@ public interface ScoreRepository {
     Score findOne(long stuNum);
 
     // 저장소에서 데이터 삭제하기
-    default boolean delete(long stuNum){
+    default boolean delete(long stuNum) {
         return false;
-    };
+    }
+
     // 저장소에서 등수, 전체인원 조회하기
     int[] findRankByStuNum(long stuNum);
+
+    // 저장소에서 국영수 점수 수정하기
+    default boolean updateScore(Score s) {
+        return false;
+    }
 
 }

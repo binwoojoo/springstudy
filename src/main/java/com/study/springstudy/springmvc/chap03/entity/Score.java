@@ -1,6 +1,7 @@
 package com.study.springstudy.springmvc.chap03.entity;
 
 import com.study.springstudy.springmvc.chap03.dto.ScorePostDto;
+import com.study.springstudy.springmvc.chap03.dto.ScoreModifyRequestDto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,6 +35,18 @@ public class Score {
         this.kor = dto.getKor();
         this.eng = dto.getEng();
         this.math = dto.getMath();
+        calculate();
+    }
+
+    public Score(ScoreModifyRequestDto dto) {
+        this.stuNum = dto.getStuNum();
+        this.kor = dto.getKor();
+        this.eng = dto.getEng();
+        this.math = dto.getMath();
+        calculate();
+    }
+
+    private void calculate() {
         this.total = kor + eng + math;
         this.average = total / 3.0;
         this.grade = calcGrade();

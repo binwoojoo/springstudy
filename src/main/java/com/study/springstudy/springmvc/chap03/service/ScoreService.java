@@ -5,6 +5,7 @@ import com.study.springstudy.springmvc.chap03.dto.ScoreListResponseDto;
 import com.study.springstudy.springmvc.chap03.dto.ScorePostDto;
 import com.study.springstudy.springmvc.chap03.entity.Score;
 import com.study.springstudy.springmvc.chap03.repository.ScoreRepository;
+import com.study.springstudy.springmvc.chap03.dto.ScoreModifyRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,4 +55,9 @@ public class ScoreService {
         return dto;
     }
 
+    // 수정 완료를 위해 서비스 클래스에서
+    // dto를 entity  연걸 및 백업
+    public void update(ScoreModifyRequestDto dto) {
+        repository.updateScore(new Score(dto));
+    }
 }
