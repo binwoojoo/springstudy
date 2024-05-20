@@ -4,7 +4,7 @@ import com.study.springstudy.springmvc.chap04.entity.Board;
 
 // dto의 필드명은 반드시 html form태그의 입력 태그들 name속성과 일치해야함
 // 역할: 브라우저가 전달한 정보를 포장하는 객체
-public class BoardDto {
+public class BoardWriteRequestDto {
 
     private String writer;
     private String title;

@@ -1,12 +1,9 @@
 package com.study.springstudy.springmvc.chap04.entity;
 
-import com.study.springstudy.springmvc.chap03.entity.Grade;
-import com.study.springstudy.springmvc.chap04.dto.BoardDto;
 import lombok.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.time.LocalDateTime;
 
 @Setter
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+// db와 연결된 정보
 public class Board {
     private int boardNo;
     private String title;

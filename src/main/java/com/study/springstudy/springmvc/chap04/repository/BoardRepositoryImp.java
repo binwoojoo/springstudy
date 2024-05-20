@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor // 파이널만 골라서 초기화 주입
-public class BoardJdbcRepository implements BoardRepository {
+public class BoardRepositoryImp implements BoardRepository {
 
     private final JdbcTemplate template;
 
@@ -40,5 +40,13 @@ public class BoardJdbcRepository implements BoardRepository {
     public boolean delete(int boardNo) {
         String sql = "DELETE FROM tbl_board WHERE board_no = ?";
         return template.update(sql, boardNo) == 1;
+    }
+
+    @Override
+    public void viewCount(int boardNo) {
+        String sql = "UPDATE tbl_board " +
+                "SET view_count = view_count + 1 " +
+                "WHERE board_no = ?";
+        template.update(sql, boardNo);
     }
 }

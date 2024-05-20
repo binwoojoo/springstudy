@@ -34,28 +34,28 @@
   <div class="card-container">
     <c:forEach var="b" items="${bList}">
       <div class="card-wrapper">
-        <section class="card" data-bno="${b.boardNo}">
+        <section class="card" data-bno="${b.bno}">
           <div class="card-title-wrapper">
-            <h2 class="card-title">${b.title}</h2>
+            <h2 class="card-title">${b.shortTitle}</h2>
             <div class="time-view-wrapper">
               <div class="time">
                 <i class="far fa-clock"></i>
-                  ${b.regDateTime}</div>
+                  ${b.date}</div>
               <div class="view">
                 <i class="fas fa-eye"></i>
-                <span class="view-count">0</span>
+                <span class="view-count">${b.view}</span>
               </div>
             </div>
           </div>
           <div class="card-content">
 
-              ${b.content}
+              ${b.shortContent}
 
           </div>
         
         </section>
         <div class="card-btn-group">
-          <button class="del-btn" data-href="delete?bno=${b.boardNo}">
+          <button class="del-btn" data-href="delete?bno=${b.bno}">
             <i class="fas fa-times"></i>
           </button>
         </div>
@@ -96,6 +96,7 @@
       modal.style.display = 'flex'; // 모달 창 띄움
 
       const $delBtn = e.target.closest('.del-btn');
+      // 삭제 링크주소 얻기
       const deleteLocation = $delBtn.dataset.href;
 
       // 확인 버튼 이벤트
