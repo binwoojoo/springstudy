@@ -32,12 +32,12 @@ public class Board {
         this.regDateTime = rs.getTimestamp("reg_date_time").toLocalDateTime();
     }
 
-    public Board(BoardDto dto) {
-        this.title = dto.getTitle();
-        this.writer = dto.getWriter();
-        this.content = dto.getContent();
-        this.boardNo = getBoardNo();
-        this.regDateTime = LocalDateTime.now();
-        this.viewCount = getViewCount();
-    }
+//    public Board(BoardDto dto) {
+//        this.title = dto.getTitle();
+//        this.writer = dto.getWriter();
+//        this.content = dto.getContent();
+//        this.boardNo = getBoardNo();
+//        this.regDateTime = LocalDateTime.now();
+//        this.viewCount = getViewCount();
+//    }
 }

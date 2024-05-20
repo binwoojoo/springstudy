@@ -1,6 +1,9 @@
 package com.study.springstudy.springmvc.chap04.dto;
 
-// 역할: 브라우저가 전달한 성적정보를 포장하는 객체
+import com.study.springstudy.springmvc.chap04.entity.Board;
+
+// dto의 필드명은 반드시 html form태그의 입력 태그들 name속성과 일치해야함
+// 역할: 브라우저가 전달한 정보를 포장하는 객체
 public class BoardDto {
 
     private String writer;
@@ -39,4 +42,13 @@ public class BoardDto {
                 ", content='" + content + '\'' +
                 '}';
     }
+
+    public Board toEntity() {
+        Board b = new Board();
+        b.setContent(this.content);
+        b.setWriter(this.writer);
+        b.setTitle(this.title);
+        return b;
+    }
+
 }

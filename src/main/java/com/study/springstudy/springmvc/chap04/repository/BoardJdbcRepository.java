@@ -1,6 +1,5 @@
 package com.study.springstudy.springmvc.chap04.repository;
 
-import com.study.springstudy.springmvc.chap03.entity.Score;
 import com.study.springstudy.springmvc.chap04.entity.Board;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@RequiredArgsConstructor
+@RequiredArgsConstructor // 파이널만 골라서 초기화 주입
 public class BoardJdbcRepository implements BoardRepository {
 
     private final JdbcTemplate template;
@@ -31,11 +30,10 @@ public class BoardJdbcRepository implements BoardRepository {
     @Override
     public boolean save(Board board) {
         String sql = "INSERT INTO tbl_board " +
-                "(board_no, title, content, writer, view_count, reg_date_time) " +
-                "VALUES (?, ?, ?, ?, ?, ?)";
-        return template.update(sql, board.getBoardNo(), board.getTitle()
-                , board.getContent(), board.getWriter(), board.getViewCount()
-                , board.getRegDateTime()) == 1;
+                "(title, content, writer) " +
+                "VALUES (?, ?, ?)";
+        return template.update(sql, board.getTitle()
+                , board.getContent(), board.getWriter()) == 1;
     }
 
     @Override
