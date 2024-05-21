@@ -49,7 +49,7 @@ public class BoardController {
 
         return "redirect:/board/list";
     }
-    
+
     @GetMapping("/delete")
     public String delete(int bno) {
 

@@ -16,7 +16,7 @@ public class BoardListResponseDto {
     private String date; // 포맷팅된 날짜 문자열
     private int view; // 조회 수
     private boolean hit; // HIT 게시물인지 여부
-    private boolean newArticle;
+    private boolean newArticle; // 새 게시물인지 여부
 
     // 엔터티를 DTO로 변환하는 생성자
     public BoardListResponseDto(Board b) {
