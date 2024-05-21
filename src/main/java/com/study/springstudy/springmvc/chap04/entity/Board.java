@@ -30,6 +30,7 @@ public class Board {
         this.regDateTime = rs.getTimestamp("reg_date_time").toLocalDateTime();
     }
 
+
 //    public Board(BoardDto dto) {
 //        this.title = dto.getTitle();
 //        this.writer = dto.getWriter();

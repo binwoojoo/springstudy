@@ -67,7 +67,7 @@ public class ScoreController {
     }
 
     @GetMapping("/remove")
-    public String remove(@RequestParam("sn") long stuNum) {
+    public String remove(long stuNum) {
         System.out.println("/score/remove : GET!");
 
         service.deleteScore(stuNum);
