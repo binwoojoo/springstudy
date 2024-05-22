@@ -50,4 +50,7 @@ public class BoardService {
         return new BoardDetailResponseDto(board);
     }
 
+    public int getCount() {
+        return mapper.getCount();
+    }
 }

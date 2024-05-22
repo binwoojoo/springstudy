@@ -22,4 +22,7 @@ public interface BoardMapper {
 
     // 조회수
     void viewCount(int boardNo);
+
+    // 총 게시물 수
+    int getCount();
 }
