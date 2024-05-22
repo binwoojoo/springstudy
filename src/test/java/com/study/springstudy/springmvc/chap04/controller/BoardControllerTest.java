@@ -1,5 +1,6 @@
 package com.study.springstudy.springmvc.chap04.controller;
 
+import com.study.springstudy.springmvc.chap04.common.Page;
 import com.study.springstudy.springmvc.chap04.entity.Board;
 import com.study.springstudy.springmvc.chap04.mapper.BoardMapper;
 import org.junit.jupiter.api.DisplayName;
@@ -12,12 +13,13 @@ import java.util.List;
 class BoardControllerTest {
 
     BoardMapper mapper;
+    Page page;
 
     @Test
     @DisplayName("리스트 전체조회")
     void listTest() {
         //given
-        List<Board> boardList = mapper.findAll();
+        List<Board> boardList = mapper.findAll(page);
         //when
 
         //then
