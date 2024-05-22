@@ -8,16 +8,17 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <title>Web Study</title>
     <style>
       body {
-        background: url('/assets/img/다운로드.png') no-repeat center/cover;
+        background: url('/assets/img/스펀지.webp') no-repeat center/cover;
+        background-size: contain;
       }
-      div {
+      .menu {
         width: 100%;
-        height: 100%;
+        height: 95vh;
       }
     </style>
   </head>
   <body>
-    <div>
+    <div class="menu">
     <h1>hello!!! JSP</h1>
 
     <a href="/chap01/join">회원가입하기</a> <br />

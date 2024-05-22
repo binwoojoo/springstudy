@@ -1,5 +1,6 @@
 package com.study.springstudy.springmvc.chap04.controller;
 
+import com.study.springstudy.springmvc.chap04.common.Page;
 import com.study.springstudy.springmvc.chap04.dto.BoardWriteRequestDto;
 import com.study.springstudy.springmvc.chap04.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +25,11 @@ public class BoardController {
 
     // 1. 목록 조회 요청 (/board/list : GET)
     @GetMapping("/list")
-    public String list(Model model) {
+    public String list(Page page,Model model) {
 
         // 서비스에게 조회 요청 위임
         // JSP파일에게 해당 목록 데이터를 보냄
-        model.addAttribute("bList", repository.findAll());
+        model.addAttribute("bList", repository.findAll(page));
 
         return "board/list";
     }
