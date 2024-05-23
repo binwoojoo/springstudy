@@ -24,5 +24,6 @@ public interface BoardMapper {
     void viewCount(int boardNo);
 
     // 총 게시물 수
-    int getCount();
+    int getCount(Search page);
+
 }

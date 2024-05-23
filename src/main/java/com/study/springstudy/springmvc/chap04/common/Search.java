@@ -15,7 +15,7 @@ public class Search extends Page {
 
     public Search() {
         this.keyword = "";
-        this.type = getType();
+//        this.type = getType();
     }
 
 }

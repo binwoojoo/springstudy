@@ -8,13 +8,13 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <title>Web Study</title>
     <style>
       body {
-        background: url('/assets/img/스펀지.webp') no-repeat center/cover;
+        background: url('/assets/img/스펀지.webp') center/cover;
         background-size: contain;
       }
-      .menu {
+      /* .menu {
         width: 100%;
         height: 95vh;
-      }
+      } */
     </style>
   </head>
   <body>
