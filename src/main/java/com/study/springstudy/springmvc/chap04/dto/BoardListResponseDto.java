@@ -1,6 +1,5 @@
 package com.study.springstudy.springmvc.chap04.dto;
 
-import com.study.springstudy.springmvc.chap04.entity.Board;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -17,16 +16,18 @@ public class BoardListResponseDto {
     private int view; // 조회 수
     private boolean hit; // HIT 게시물인지 여부
     private boolean newArticle; // 새 게시물인지 여부
+    private int replyCount; // 댓글 수
 
     // 엔터티를 DTO로 변환하는 생성자
-    public BoardListResponseDto(Board b) {
-        this.bno = b.getBoardNo();
+    public BoardListResponseDto(BoardFindAllDto b) {
+        this.bno = (int) b.getBoardNo();
         this.shortTitle = makeShortTitle(b.getTitle());
         this.shortContent = makeShortContent(b.getContent());
         this.date = dateFormatting(b.getRegDateTime());
         this.view = b.getViewCount();
         this.hit = this.view >= 5;
         this.newArticle = LocalDateTime.now().isBefore(b.getRegDateTime().plusHours(1));
+        this.replyCount = b.getReplyCount();
     }
 
     private String makeShortTitle(String title) {

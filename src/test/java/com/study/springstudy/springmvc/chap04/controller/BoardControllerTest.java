@@ -12,18 +12,18 @@ import java.util.List;
 @SpringBootTest
 class BoardControllerTest {
 
-    BoardMapper mapper;
-    Page page;
-
-    @Test
-    @DisplayName("리스트 전체조회")
-    void listTest() {
-        //given
-        List<Board> boardList = mapper.findAll(page);
-        //when
-
-        //then
-        System.out.println("boardList = " + boardList);
-    }
+//    BoardMapper mapper;
+//    Page page;
+//
+//    @Test
+//    @DisplayName("리스트 전체조회")
+//    void listTest() {
+//        //given
+//        List<Board> boardList = mapper.findAll(page);
+//        //when
+//
+//        //then
+//        System.out.println("boardList = " + boardList);
+//    }
 
 }

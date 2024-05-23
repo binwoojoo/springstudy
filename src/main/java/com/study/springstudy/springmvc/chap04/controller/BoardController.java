@@ -2,6 +2,7 @@ package com.study.springstudy.springmvc.chap04.controller;
 
 import com.study.springstudy.springmvc.chap04.common.PageMaker;
 import com.study.springstudy.springmvc.chap04.common.Search;
+import com.study.springstudy.springmvc.chap04.dto.BoardDetailResponseDto;
 import com.study.springstudy.springmvc.chap04.dto.BoardWriteRequestDto;
 import com.study.springstudy.springmvc.chap04.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -71,7 +72,9 @@ public class BoardController {
     @GetMapping("/detail")
     public String detail(int bno, HttpServletRequest request, Model model) {
 
-        model.addAttribute("b", service.findOne(bno));
+        BoardDetailResponseDto dto = service.findOne(bno);
+
+        model.addAttribute("b", dto);
 
         // 요청 헤더를 파싱하여 이전 페이지의 주소를 얻어냄
         String ref = request.getHeader("Referer");

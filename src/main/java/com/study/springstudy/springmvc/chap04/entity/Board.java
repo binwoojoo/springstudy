@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 // db와 연결된 정보
 public class Board {
     private int boardNo;
