@@ -30,6 +30,15 @@ class ReplyMapperTest {
         //then
         replyList.forEach(System.out::println);
 
+//        for (int i = 1; i <= 5000; i++) {
+//            Reply reply = Reply.builder()
+//                    .replyText("하하호호댓글" + i)
+//                    .replyWriter("꾸러긔" + i)
+//                    .boardNo((long) (Math.random() * 100 + 1))
+//                    .build();
+//
+//            replyMapper.save(reply);
+//        }
     }
 
     @Test
@@ -56,6 +65,7 @@ class ReplyMapperTest {
         replyMapper.modify(reply);
         //then
     }
+
 
 
 
