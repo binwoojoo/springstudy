@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.study.springstudy.springmvc.chap05.entity.Reply;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -15,6 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 public class ReplyDetailDto {
 
+//    @JsonProperty("reply_no")
     private long rno;
     private String text;
     private String writer;
