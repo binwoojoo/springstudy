@@ -309,7 +309,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         const $li = document.querySelector(
           `.pagination li[data-page-num="\${currentPage}"]`
         );
-
+        
         // 3. 해당 li태그에 class = active를 추가한다.
         $li?.classList.add("active"); // null이 아니면
       }

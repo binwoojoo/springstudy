@@ -111,6 +111,7 @@
         button.list-btn:hover {
             background: #e61e8c93;
         }
+
         /* 페이지 css */
         /* 페이지 액티브 기능 */
         .pagination .page-item.p-active a {
@@ -119,11 +120,12 @@
             cursor: default;
             pointer-events: none;
         }
-
+        
         .pagination .page-item:hover a {
             background: #888 !important;
             color: #fff !important;
         }
+
     </style>
 </head>
 <body>
@@ -140,7 +142,7 @@
     <div class="buttons">
         <button class="list-btn" type="button" onclick="window.location.href='${ref}'">목록</button>
     </div>
-    
+
     <!-- 댓글 영역 -->
 
     <div id="replies" class="row">

@@ -5,7 +5,6 @@
 
 <mapper namespace="com.study.springstudy.springmvc.chap05.mapper.ReplyMapper">
 
-
     <insert id="save">
         INSERT INTO tbl_reply
             (reply_text,reply_writer,board_no)
@@ -25,8 +24,9 @@
 
     <select id="findAll" resultType="reply">
         SELECT * FROM tbl_reply
-        WHERE board_no = #{boardNo}
+        WHERE board_no = #{bno}
         ORDER BY reply_no
+        LIMIT #{p.pageStart}, #{p.amount}
     </select>
 
     <select id="count" resultType="int">
