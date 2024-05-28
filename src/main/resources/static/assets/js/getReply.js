@@ -96,6 +96,8 @@ export function renderReplies({ pageInfo, replies }) {
 
   document.getElementById("replyData").innerHTML = tag;
 
+  deleteReplyEvent();
+
   // 페이지 태그 렌더링
   renderPage(pageInfo);
 }
@@ -120,8 +122,13 @@ export function replyPageClickEvent() {
   });
 }
 
-export function deleteReplyEvent() {
-  //   const $delete = document.getElementById("replyContent")
-  const $li = document.getElementById(`replyContent data-reply-id= '1'`);
-  console.log($li);
+export async function deleteReplyEvent() {
+  // 삭제 버튼에 이벤트 리스너 추가
+  document.querySelectorAll("#replyContent").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const $rno = e.target.getAttribute("data-reply-id");
+      const $delete = e.target.querySelector("#replyDelBtn");
+    });
+  });
 }

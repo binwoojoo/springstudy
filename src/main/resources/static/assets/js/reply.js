@@ -20,4 +20,4 @@ document.getElementById('replyAddBtn').addEventListener('click', e => {
 replyPageClickEvent();
 
 // 댓글 삭제 이벤트 등록
-deleteReplyEvent();
+// deleteReplyEvent();
