@@ -111,6 +111,12 @@
         button.list-btn:hover {
             background: #e61e8c93;
         }
+        .float-right {
+            float: right;
+            text-align: right;
+            text-decoration : none;
+            color : white;
+        }
 
         /* 페이지 css */
         /* 페이지 액티브 기능 */
@@ -151,11 +157,13 @@
     <label for="title">제목</label>
     <input type="text" id="title" name="title" value="${b.title}" readonly>
     <label for="content">내용</label>
-    <div id="content">${b.content}</div>
+    <div id="content">${b.content}
+        <iframe width="300" height="300" src="https://www.youtube.com/embed/phuiiNCxRMg" title="aespa 에스파 &#39;Supernova&#39; MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
     <div class="buttons">
         <button class="list-btn" type="button" onclick="window.location.href='${ref}'">목록</button>
     </div>
-    
+
     <!-- 댓글 영역 -->
 
     <div id="replies" class="row">
@@ -190,7 +198,9 @@
             <div class="card">
                 <!-- 댓글 내용 헤더 -->
                 <div class="card-header text-white m-0" style="background: #343A40;">
-                    <div class="float-left">댓글 (<span id="replyCnt">0</span>)</div>
+                    <div class="float-left">댓글 (<span id="replyCnt">0</span>)
+                        <a href="#" class="float-right">접기</a>
+                    </div>
                 </div>
 
                 <!-- 댓글 내용 바디 -->

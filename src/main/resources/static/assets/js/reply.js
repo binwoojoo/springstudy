@@ -2,6 +2,7 @@ import { fetchInfScrollReplies, setupInfiniteScroll } from "./getReply.js";
 import { fetchReplyPost } from "./postReply.js";
 import { removeReplyClickEvent } from "./deleteReply.js";
 import { modifyReplyClickEvent } from "./modifyReply.js";
+import { hideReply } from "./hideReply.js";
 
 // ====== 전역 변수 ========
 export const BASE_URL = 'http://localhost:8383/api/v1/replies';
@@ -27,3 +28,6 @@ removeReplyClickEvent();
 
 // 댓글 수정 이벤트 등록
 modifyReplyClickEvent();
+
+// 댓글 숨기기 이벤트 등록
+hideReply();

@@ -176,6 +176,8 @@ function appendReplies({ replies }) {
   // 로드된 댓글 수 업데이트
   loadedReplies += replies.length;
 
+  hideReply({ replies });
+  
 }
 
 // 서버에서 댓글 데이터를 페칭
@@ -240,5 +242,15 @@ export function setupInfiniteScroll() {
   window.addEventListener('scroll', scrollHandler);
 }
 
-
-
+function hideReply({ replies }) {
+  document.querySelector(".float-right").addEventListener("click", (e) => {
+    e.preventDefault();
+    if(document.querySelector(".float-right").textContent === "열기") {
+      appendReplies({replies});
+      document.querySelector(".float-right").textContent = "접기";
+    } else if(document.querySelector(".float-right").textContent === "접기") {
+      document.getElementById('replyData').innerHTML = '';
+      document.querySelector(".float-right").textContent = "열기";
+    }
+  });
+}
