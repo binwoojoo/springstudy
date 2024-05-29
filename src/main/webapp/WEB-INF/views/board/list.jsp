@@ -74,14 +74,13 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
 
         <div class="amount">
-          <div><a href="#">6</a></div>
-          <div><a href="#">18</a></div>
-          <div><a href="#">30</a></div>
+          <div><a href="#" data-items="6">6</a></div>
+          <div><a href="#" data-items="18">18</a></div>
+          <div><a href="#" data-items="30">30</a></div>
         </div>
       </div>
 
       <div class="card-container">
-
         <c:if test="${bList.size() == 0}">
           <div class="empty">검색한 게시물이 존재하지 않습니다.</div>
         </c:if>
@@ -309,11 +308,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         const $li = document.querySelector(
           `.pagination li[data-page-num="\${currentPage}"]`
         );
-        
+
         // 3. 해당 li태그에 class = active를 추가한다.
         $li?.classList.add("active"); // null이 아니면
       }
-      
+
       // 기존 검색 조건 option태그 고정하기
       function fixSearchOption() {
         // 1. 방금 전에 어떤 조건을 검색했는지 값을 알아옴
@@ -328,7 +327,14 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         // 3. 해당 태그에 selected 속성 부여
         $option?.setAttribute("selected", "selected");
       }
-      
+
+      function renderByNum() {
+        document.querySelector(".amount").addEventListener("click", (e) => {
+          console.log(e.target.textContent);
+        });
+      }
+
+      renderByNum();
       appendActivePage();
       fixSearchOption();
     </script>

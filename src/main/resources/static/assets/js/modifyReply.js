@@ -58,5 +58,5 @@ async function fetchReplyModify() {
   document.getElementById('modal-close').click();
 
   window.scrollTo(0, 500); // 수정 후 페이지 상단으로 이동
-  await fetchInfScrollReplies(); 
+  await fetchInfScrollReplies();
 }

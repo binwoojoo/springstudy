@@ -16,7 +16,7 @@
             (#{account}, #{password}, #{name}, #{email})
     </insert>
 
-    <select id="findOne" resultType="Member">
+    <select id="findOne" resultType="member">
         SELECT
             *
         FROM tbl_member
