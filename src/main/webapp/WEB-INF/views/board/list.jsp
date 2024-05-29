@@ -313,7 +313,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         // 3. 해당 li태그에 class = active를 추가한다.
         $li?.classList.add("active"); // null이 아니면
       }
-
+      
       // 기존 검색 조건 option태그 고정하기
       function fixSearchOption() {
         // 1. 방금 전에 어떤 조건을 검색했는지 값을 알아옴
