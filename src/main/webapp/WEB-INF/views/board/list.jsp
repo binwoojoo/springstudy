@@ -330,7 +330,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
       function renderByNum() {
         document.querySelector(".amount").addEventListener("click", (e) => {
-          console.log(e.target.textContent);
+          e.preventDefault();
+          const itemsPerPage = e.target.textContent;
+          const currentURL = new URL(window.location.href);
+          currentURL.searchParams.set("itemsPerPage", itemsPerPage);
+          window.location.href = currentURL.toString();
         });
       }
 

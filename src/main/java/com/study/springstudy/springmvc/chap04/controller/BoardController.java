@@ -8,10 +8,7 @@ import com.study.springstudy.springmvc.chap04.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,8 +27,11 @@ public class BoardController {
 
     // 1. 목록 조회 요청 (/board/list : GET)
     @GetMapping("/list")
-    public String list(@ModelAttribute("s") Search page, Model model) {
-
+    public String list(@ModelAttribute("s") Search page,
+                       @RequestParam(defaultValue = "6") int itemsPerPage,
+                       Model model)
+    {
+        page.setAmount(itemsPerPage);
         // 서비스에게 조회 요청 위임
         // 페이지 정보를 생성하여 JSP에게 전송
         PageMaker maker = new PageMaker(page, service.getCount(page));
@@ -42,7 +42,7 @@ public class BoardController {
 
         return "board/list";
     }
-
+    
     // 2. 게시글 쓰기 양식 화면 열기 요청 (/board/write : GET)
     @GetMapping("/write")
     public String writeList() {
