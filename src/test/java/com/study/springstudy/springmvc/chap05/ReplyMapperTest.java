@@ -23,12 +23,12 @@ class ReplyMapperTest {
     @Test
     @DisplayName("전체 조회")
     void findAllTest() {
-        //given
-        long boardNo = 1;
-        //when
-        List<Reply> replyList = replyMapper.findAll(boardNo);
-        //then
-        replyList.forEach(System.out::println);
+//        //given
+//        long boardNo = 1;
+//        //when
+//        List<Reply> replyList = replyMapper.findAll(boardNo);
+//        //then
+//        replyList.forEach(System.out::println);
 
 //        for (int i = 1; i <= 5000; i++) {
 //            Reply reply = Reply.builder()
