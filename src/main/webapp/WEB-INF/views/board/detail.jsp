@@ -209,7 +209,7 @@
                     <h4 class="modal-title">댓글 수정하기</h4>
                     <button type="button" class="close text-white" data-bs-dismiss="modal">X</button>
                 </div>
-
+                
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="form-group">
