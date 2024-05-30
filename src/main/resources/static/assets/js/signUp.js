@@ -10,7 +10,7 @@ const signupButton = document.getElementById('signup-btn');
 // 각 필드에 대한 정보 배열 (id, 유효성 검증 함수, 에러 메시지 표시 요소, 초기 유효 상태)
 const fields = [
   { id: 'user_id', validator: validateInput.account, errorElement: 'idChk', valid: false },
-  { id: 'password', validator: validateInput.password, errorElement: 'pwChk', valid: false },
+  { id: 'password', validator: (value) => validateInput.password(value, document.getElementById('password_check').value), errorElement: 'pwChk', valid: false },
   { id: 'password_check', validator: (value) => validateInput.passwordCheck(value, document.getElementById('password').value), errorElement: 'pwChk2', valid: false },
   { id: 'user_name', validator: validateInput.name, errorElement: 'nameChk', valid: false },
   { id: 'user_email', validator: validateInput.email, errorElement: 'emailChk', valid: false }
@@ -27,7 +27,6 @@ const updateButtonState = () => {
     signupButton.style.backgroundColor = 'lightgray'; // 비활성화된 버튼 배경색
   }
 };
-
 
 // 각 필드에 대해 입력값 검증 이벤트 리스너를 추가
 fields.forEach(field => {

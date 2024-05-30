@@ -7,7 +7,6 @@ export const checkAvailability = async (type, keyword) => {
     return !flag;
   };
   
-  
   // 유효성 검증에 사용될 정규표현식 패턴들 정의
   
   // 아이디 패턴: 영문 대소문자와 숫자, 4~14글자
@@ -35,13 +34,17 @@ export const checkAvailability = async (type, keyword) => {
       return isAvailable ? { valid: true } : { valid: false, message: '아이디가 중복되었습니다.' };
     },
     // 비밀번호 유효성 검사 함수
-    password: (value) => {
+    password: (value, password_check) => {
       // 빈 값 검사
       if (!value.trim()) return { valid: false, message: '비밀번호는 필수값입니다!' };
       // 정규표현식 검사
       if (!passwordPattern.test(value)) return { valid: false, message: '비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다!' };
       // 유효한 경우
-      return { valid: true };
+      if(passwordPattern.test(value) && password_check !== value && password_check !== "") {
+        return { valid: false, message: '비밀번호가 일치하지 않습니다!' };
+      } else {
+        return { valid: true };
+      }
     },
     // 비밀번호 확인 유효성 검사 함수
     passwordCheck: (value, password) => {
@@ -50,7 +53,7 @@ export const checkAvailability = async (type, keyword) => {
       // 비밀번호 일치 여부 검사
       if (value !== password) return { valid: false, message: '비밀번호가 일치하지 않습니다!' };
       // 유효한 경우
-      return { valid: true };
+      if(value === password && password !== "") return { valid: true };
     },
     // 이름 유효성 검사 함수
     name: (value) => {
