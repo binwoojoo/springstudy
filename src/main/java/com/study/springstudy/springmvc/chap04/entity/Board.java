@@ -21,6 +21,7 @@ public class Board {
     private String writer;
     private int viewCount;
     private LocalDateTime regDateTime;
+    private String account; // 글쓴이 계정명
 
     public Board(ResultSet rs) throws SQLException {
         this.boardNo = rs.getInt("board_no");
@@ -29,6 +30,7 @@ public class Board {
         this.writer = rs.getString("writer");
         this.viewCount = rs.getInt("view_count");
         this.regDateTime = rs.getTimestamp("reg_date_time").toLocalDateTime();
+
     }
 
 

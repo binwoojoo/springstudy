@@ -14,7 +14,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
     private final AfterLoginInterceptor afterLoginInterceptor;
     private final BoardInterceptor boardInterceptor;
-    
+
     // 설정 메서드
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

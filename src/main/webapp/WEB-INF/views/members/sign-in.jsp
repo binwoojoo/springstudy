@@ -112,7 +112,7 @@
     // 이 경우에는 쿼리스트링에 message 파라미터가 붙어있음
     const params = new URLSearchParams(window.location.search);
     const message = params.get('message');
-
+    
     if(message === 'login-required') {
         alert('로그인이 필요한 서비스입니다.')
     }
@@ -124,6 +124,7 @@
 
         // history.replaceState(state, title, url) : 브라우저 조작
         history.replaceState(null, null, newUrl);
+
 </script>
 
 </body>

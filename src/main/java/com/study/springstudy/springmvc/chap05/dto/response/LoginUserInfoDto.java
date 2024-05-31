@@ -21,6 +21,6 @@ public class LoginUserInfoDto {
         this.account = member.getAccount();
         this.email = member.getEmail();
         this.nickName = member.getName();
-        this.auth = member.getAuth().toString();
+        this.auth = member.getAuth().name();
     }
 }

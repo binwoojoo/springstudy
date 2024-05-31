@@ -7,9 +7,11 @@ import com.study.springstudy.springmvc.chap04.dto.BoardListResponseDto;
 import com.study.springstudy.springmvc.chap04.dto.BoardWriteRequestDto;
 import com.study.springstudy.springmvc.chap04.entity.Board;
 import com.study.springstudy.springmvc.chap04.mapper.BoardMapper;
+import com.study.springstudy.springmvc.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,11 +35,14 @@ public class BoardService {
     }
 
     // 등록 요청 중간처리
-    public void save(BoardWriteRequestDto dto) {
+    public void save(BoardWriteRequestDto dto, HttpSession session) {
 
         Board b = dto.toEntity();
+        // 계정명을 엔터티에 추가 - 세션에서 계정명 가져오기
 
-       boardmapper.save(b);
+        b.setAccount(LoginUtil.getLoggedUserAccount(session));
+
+        boardmapper.save(b);
 
     }
 
