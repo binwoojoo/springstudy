@@ -62,9 +62,11 @@ public class BoardController {
     }
 
     @GetMapping("/delete")
-    public String delete(int bno) {
+    public String delete(int bno,HttpSession session) {
 
-        service.delete(bno);
+
+            service.delete(bno,session);
+
 
         return "redirect:/board/list";
     }

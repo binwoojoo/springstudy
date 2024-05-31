@@ -19,4 +19,10 @@ public class LoginUtil {
         LoginUserInfoDto user = (LoginUserInfoDto) session.getAttribute(LOGIN);
         return (user != null) ? user.getAccount() : null;
     }
+
+    public static String getLoggedUserAuth(HttpSession session) {
+
+        LoginUserInfoDto user = (LoginUserInfoDto) session.getAttribute(LOGIN);
+        return (user != null) ? user.getAuth() : null;
+    }
 }

@@ -38,16 +38,29 @@ public class BoardService {
     public void save(BoardWriteRequestDto dto, HttpSession session) {
 
         Board b = dto.toEntity();
-        // 계정명을 엔터티에 추가 - 세션에서 계정명 가져오기
 
+        // 계정명을 엔터티에 추가 - 세션에서 계정명 가져오기
         b.setAccount(LoginUtil.getLoggedUserAccount(session));
 
         boardmapper.save(b);
 
     }
 
-    public void delete(int bno) {
-        boardmapper.delete(bno);
+    public void delete(int bno,HttpSession session) {
+
+        Board targetBoard = boardmapper.findOne(bno);
+        String account = targetBoard.getAccount();
+        String userAccount = LoginUtil.getLoggedUserAccount(session);
+        String userAuth = LoginUtil.getLoggedUserAuth(session);
+        
+       if(userAccount.equals(account)){
+           boardmapper.delete(bno);
+       }
+
+       if(userAuth.equals("ADMIN")){
+           boardmapper.delete(bno);
+       }
+
     }
 
     public BoardDetailResponseDto findOne(int bno) {

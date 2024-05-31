@@ -206,7 +206,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
             modal.style.display = "none"; // 모달 창 닫기
           };
-
+          
           // 취소 버튼 이벤트
           cancelDelete.onclick = (e) => {
             modal.style.display = "none"; // 모달 창 닫기
