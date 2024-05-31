@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,7 +16,8 @@ class MemberServiceTest {
 
     @Autowired
     MemberService memberService;
-
+    @Autowired
+    RedirectAttributes ra;
 
     @Test
     @DisplayName("회원가입을 하면 비밀번호가 인코딩된다.")
@@ -43,7 +45,7 @@ class MemberServiceTest {
                 .account("asdasdsad")
                 .build();
         //when
-        LoginResult result = memberService.authenticate(dto);
+        LoginResult result = memberService.authenticate(dto,ra);
         //then
         assertEquals(LoginResult.NO_ACC, result);
     }
@@ -57,7 +59,7 @@ class MemberServiceTest {
                 .password("dasdsaa")
                 .build();
         //when
-        LoginResult result = memberService.authenticate(dto);
+        LoginResult result = memberService.authenticate(dto,ra);
         //then
         assertEquals(LoginResult.NO_PW, result);
     }

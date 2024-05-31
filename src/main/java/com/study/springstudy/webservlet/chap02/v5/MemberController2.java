@@ -10,7 +10,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/chap02/v5/*")
-public class MemberController {
+public class MemberController2 {
 
     private MemberMemoryRepo repo = MemberMemoryRepo.getInstance();
 
