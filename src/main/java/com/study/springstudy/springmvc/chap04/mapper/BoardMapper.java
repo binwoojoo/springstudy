@@ -1,5 +1,6 @@
 package com.study.springstudy.springmvc.chap04.mapper;
 
+import com.study.springstudy.springmvc.chap04.common.Page;
 import com.study.springstudy.springmvc.chap04.common.Search;
 import com.study.springstudy.springmvc.chap04.dto.BoardFindAllDto;
 import com.study.springstudy.springmvc.chap04.entity.Board;
@@ -9,10 +10,11 @@ import java.util.List;
 
 @Mapper
 public interface BoardMapper {
+
     // 게시물 목록 조회
     List<BoardFindAllDto> findAll(Search page);
 
-    // 게시글 상세 조회
+    // 게시물 상세 조회
     Board findOne(int boardNo);
 
     // 게시물 등록
@@ -21,10 +23,10 @@ public interface BoardMapper {
     // 게시물 삭제
     boolean delete(int boardNo);
 
-    // 조회수
-    void viewCount(int boardNo);
+    // 조회수 상승
+    void upViewCount(int boardNo);
 
-    // 총 게시물 수
-    int getCount(Search page);
 
+    // 총 게시물 수 조회
+    int count(Search search);
 }

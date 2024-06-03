@@ -20,5 +20,4 @@ public class BoardFindAllDto {
     private int viewCount;
     private int replyCount;
     private String account;
-
 }

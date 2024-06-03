@@ -1,19 +1,20 @@
 package com.study.springstudy.springmvc.chap05.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.study.springstudy.springmvc.chap05.entity.Reply;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Getter
-@ToString
+@Getter @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 @Builder
 public class ReplyDetailDto {
 
-//    @JsonProperty("reply_no")
+    @JsonProperty("reply_no")
     private long rno;
     private String text;
     private String writer;
@@ -22,7 +23,7 @@ public class ReplyDetailDto {
     private LocalDateTime createAt;
 
     // 엔터티를 DTO로 변환하는 생성자
-    public ReplyDetailDto(Reply r){
+    public ReplyDetailDto(Reply r) {
         this.rno = r.getReplyNo();
         this.text = r.getReplyText();
         this.writer = r.getReplyWriter();

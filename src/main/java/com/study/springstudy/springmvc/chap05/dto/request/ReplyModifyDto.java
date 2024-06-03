@@ -9,18 +9,18 @@ import javax.validation.constraints.NotNull;
 @Getter @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Builder
+@EqualsAndHashCode
 public class ReplyModifyDto {
 
     @NotNull
-    private long rno; // ¼öÁ¤ÇÒ ´ñ±ÛÀÇ ´ñ±Û ¹øÈ£
+    private Long rno; // ìˆ˜ì •í•  ëŒ“ê¸€ì˜ ëŒ“ê¸€ë²ˆí˜¸
     @NotBlank
-    private String newText; // »õ·Î¿î ´ñ±Û ³»¿ë
+    private String newText; // ìƒˆë¡œìš´ ëŒ“ê¸€ ë‚´ìš©
     @NotNull
-    private long bno; // ¼öÁ¤ ¿Ï·á ÈÄ »õ·Î¿î ¸ñ·Ï Á¶È¸ÇÏ±â À§ÇØ
+    private Long bno; // ìˆ˜ì • ì™„ë£Œ í›„ ìƒˆë¡œìš´ ëª©ë¡ì„ ì¡°íšŒí•˜ê¸° ìœ„í•´
 
-    // ¿£ÅÍÆ¼·Î º¯È¯ÇÏ´Â ¸Ş¼­µå
+    // ì—”í„°í‹°ë¡œ ë³€í™˜í•˜ëŠ” ë©”ì„œë“œ
     public Reply toEntity() {
         return Reply.builder()
                 .replyText(this.newText)
@@ -28,4 +28,5 @@ public class ReplyModifyDto {
                 .boardNo(this.bno)
                 .build();
     }
+
 }

@@ -4,15 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
-@Getter
-@ToString
+@Getter @ToString
 @AllArgsConstructor
 public enum Auth {
 
-    COMMON("ÀÏ¹İÈ¸¿ø", 1),
-    ADMIN("°ü¸®ÀÚ", 2);
+    COMMON("ì¼ë°˜íšŒì›", 1),
+    ADMIN("ê´€ë¦¬ìíšŒì›", 2);
 
-    private String desc; // ±ÇÇÑ ¼³¸í
-    private int authNumber; // ±ÇÇÑ ¹øÈ£
-
+    private String desc; //ê¶Œí•œ ì„¤ëª…
+    private int authNumber; // ê¶Œí•œ ë²ˆí˜¸
 }

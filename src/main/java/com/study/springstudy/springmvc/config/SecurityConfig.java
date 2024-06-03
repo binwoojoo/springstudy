@@ -7,6 +7,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.util.Scanner;
+
 @EnableWebSecurity // 시큐리티 설정 파일
 public class SecurityConfig {
 
@@ -15,7 +17,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-                .csrf().disable() // csrf 토큰 공격 방지 기능 off
+                .csrf().disable()  // csrf 토큰공격방지 기능 off
                 // 모든 요청에 대해 인증하지 않겠다.
                 .authorizeRequests().antMatchers("/**").permitAll();
 
@@ -27,6 +29,8 @@ public class SecurityConfig {
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
+
+
     // ex
 //    @Bean
 //    public Scanner scanner() {

@@ -19,12 +19,13 @@ public interface ScoreMapper {
     Score findOne(long stuNum);
 
     // 저장소에서 데이터 삭제하기
-     boolean delete(long stuNum);
+    boolean delete(long stuNum);
 
     // 저장소에서 등수, 전체인원 조회하기
     RankDto findRankByStuNum(long stuNum);
 
     // 저장소에서 국영수 점수 수정하기
     boolean updateScore(Score s);
+
 
 }

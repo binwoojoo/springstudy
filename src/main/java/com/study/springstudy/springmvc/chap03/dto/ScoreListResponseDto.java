@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 public class ScoreListResponseDto {
+
     private long stuNum;
     private String maskingName; // 첫글자 빼고 모두 *처리
     private double average;
@@ -26,5 +27,3 @@ public class ScoreListResponseDto {
         return maskedName;
     }
 }
-
-

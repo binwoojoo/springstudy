@@ -4,8 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter @ToString
+@Setter @Getter @ToString
 public class ScoreModifyRequestDto {
+
     private long stuNum;
-    private int kor,eng,math;
+    private int kor, eng, math;
 }

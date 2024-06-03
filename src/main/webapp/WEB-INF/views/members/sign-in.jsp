@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -6,14 +5,12 @@
 <html lang="ko">
 
 <head>
-
     <%@ include file="../include/static-head.jsp" %>
 
     <!-- 외부 스타일시트 링크 추가 -->
     <link rel="stylesheet"  href="/assets/css/member.css" />
 </head>
 <body>
-
 <%@ include file="../include/header.jsp" %>
 
 <div class="container wrap">
@@ -112,18 +109,21 @@
     // 이 경우에는 쿼리스트링에 message 파라미터가 붙어있음
     const params = new URLSearchParams(window.location.search);
     const message = params.get('message');
-    
-    if(message === 'login-required') {
-        alert('로그인이 필요한 서비스입니다.')
-    }
 
-    // 쿼리 파라미터를 제거한 새로운 URL 생성
+    if (message === 'login-required') {
+        alert('로그인이 필요한 서비스입니다.');
+
+        // 쿼리 파라미터를 제거한 새로운 URL 생성
         // window.location.origin -> http://localhost:8383
         // window.location.pathname -> /members/sign-in
         const newUrl = window.location.origin + window.location.pathname;
 
         // history.replaceState(state, title, url) : 브라우저 조작
         history.replaceState(null, null, newUrl);
+    }
+
+    
+
 
 </script>
 

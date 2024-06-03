@@ -8,22 +8,21 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Getter @Setter
-@ToString
-@AllArgsConstructor
+@Setter @Getter @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @EqualsAndHashCode
 public class SignUpDto {
 
-    @NotBlank(message = "¾ÆÀÌµğ´Â ÇÊ¼ö°ªÀÔ´Ï´Ù.")
-    @Size(min = 4, max = 14, message = "¾ÆÀÌµğ´Â 4~14±ÛÀÚ.")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "¾ÆÀÌµğ´Â ¿µ¹®°ú ¼ıÀÚ¸¸ Æ÷ÇÔÇØ¾ß ÇÕ´Ï´Ù.")
+    @NotBlank(message = "ì•„ì´ë””ëŠ” í•„ìˆ˜ê°’ì…ë‹ˆë‹¤.")
+    @Size(min = 4, max = 14, message = "ì•„ì´ë””ëŠ” 4~14ê¸€ì")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "ì•„ì´ë””ëŠ” ì˜ë¬¸ê³¼ ìˆ«ìë§Œ í¬í•¨í•´ì•¼ í•©ë‹ˆë‹¤.")
     private String account;
 
     @NotBlank
     private String password;
-    
+
     @NotBlank
     @Size(min = 2, max = 6)
     private String name;
@@ -36,10 +35,9 @@ public class SignUpDto {
 
         return Member.builder()
                 .account(this.account)
+                .email(this.email)
                 .password(this.password)
                 .name(this.name)
-                .email(this.email)
                 .build();
-
     }
 }

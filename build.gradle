@@ -1,3 +1,4 @@
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.10'
@@ -19,10 +20,10 @@ repositories {
 }
 
 dependencies {
-    // 스프링 종합 선물 세트ㅋㅋ
+    // 스프링 종합선물 세트
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    //lombok
+    // 롬복
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
@@ -39,7 +40,7 @@ dependencies {
     // Spring JDBC 모듈
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
-    // my batis 모듈
+    // 마이바티스 모듈
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 
     // 입력값 검증 라이브러리
@@ -47,6 +48,7 @@ dependencies {
 
     //스프링 시큐리티 모듈
     implementation 'org.springframework.boot:spring-boot-starter-security'
+
 }
 
 tasks.named('test') {

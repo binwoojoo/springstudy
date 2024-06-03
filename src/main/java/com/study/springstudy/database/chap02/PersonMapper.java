@@ -8,10 +8,10 @@ import java.util.List;
 @Mapper
 public interface PersonMapper {
 
-    // 사람 전체 조회
+    // 사람 전체조회
     List<Person> findAll();
 
-    // 사람 개별 조회
+    // 사람 개별조회
     Person findOne(long id);
 
     // 사람 등록

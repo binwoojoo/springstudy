@@ -5,8 +5,8 @@
 <header>
   <div class="inner-header">
     <h1 class="logo">
-      <a href="/">
-        <img src="/assets/img/스펀지.webp" alt="로고이미지">
+      <a href="/board/list">
+        <img src="/assets/img/logo.png" alt="로고이미지">
       </a>
     </h1>
     <h2 class="intro-text">Welcome ${login.nickName}</h2>

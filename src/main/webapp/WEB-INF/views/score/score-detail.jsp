@@ -82,7 +82,6 @@
             <div class="btn-group">
                 <a class="list-btn" href="/score/list">목록</a>
                 <a class="mod-btn" href="/score/modify?stuNum=${s.stuNum}">수정</a>
-                <!-- a 태그는 전부 get 요청 -->
             </div>
         </section>
 

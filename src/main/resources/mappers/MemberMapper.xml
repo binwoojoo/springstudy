@@ -3,12 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- mapper파일은 실행할 SQL을 적는 파일 -->
-<!-- 생성한 mapper파일은 mybatis-config.xml에 사용 등록을 해야함 -->
-
-<!-- namespqce속성에는 사용할 인터페이스의 풀네임(패키지 + 인터페이스명)을 적음 -->
 <mapper namespace="com.study.springstudy.springmvc.chap05.mapper.MemberMapper">
-    <!--    id속성에 인터페이스의 추상메서드명을 적는다. -->
+
     <insert id="save">
         INSERT INTO tbl_member
             (account, password, name, email)
@@ -18,21 +14,39 @@
 
     <select id="findOne" resultType="member">
         SELECT
-            *
+            account
+            , password
+            , name
+            , email
+            , auth
+            , reg_date
         FROM tbl_member
         WHERE account = #{account}
     </select>
 
     <select id="existsById" resultType="boolean">
-        SELECT
-            COUNT(*)
+        SELECT COUNT(*)
         FROM tbl_member
         <if test="type == 'account'">
-            WHERE account = #{keyword}
+        WHERE account = #{keyword}
         </if>
         <if test="type == 'email'">
-            WHERE email = #{keyword}
+        WHERE email = #{keyword}
         </if>
+    </select>
+
+
+    <update id="updateAutoLogin">
+        UPDATE tbl_member
+        SET session_id = #{sessionId}, limit_time = #{limitTime}
+        WHERE account = #{account}
+    </update>
+
+    <select id="findMemberBySessionId" resultType="member">
+        SELECT
+            account, name, email, auth, limit_time
+        FROM tbl_member
+        WHERE session_id = #{sessionId}
     </select>
 
 </mapper>

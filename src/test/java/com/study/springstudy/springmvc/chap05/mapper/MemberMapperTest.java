@@ -19,63 +19,59 @@ class MemberMapperTest {
     PasswordEncoder encoder;
 
     @Test
-    @DisplayName("회원가입에 성공해야한다")
+    @DisplayName("회원가입에 성공해야 한다")
     void saveTest() {
         //given
         Member member = Member.builder()
-                .account("zzz1234")
-                .password("zzz1234")
-                .name("최익현")
-                .email("zzz1234@gmail.com")
+                .account("kuromi")
+                .password("abc1234!")
+                .name("쿠로미")
+                .email("kuromi@gmail.com")
                 .build();
+
         //when
         boolean flag = memberMapper.save(member);
+
+        //then
+        assertTrue(flag);
+    }
+
+
+    @Test
+    @DisplayName("kuromi 계정명을 조회하면 그 회원의 이름이 쿠로미여야 한다")
+    void findOneTest() {
+        //given
+        String acc = "kuromi";
+        //when
+        Member foundMember = memberMapper.findOne(acc);
+        //then
+        assertEquals("쿠로미", foundMember.getName());
+    }
+
+
+
+    @Test
+    @DisplayName("계정명이 kuromi인 회원은 중복확인 결과가 true이다.")
+    void existsTest() {
+        //given
+        String acc = "kuromi";
+        //when
+        boolean flag = memberMapper.existsById("account", acc);
         //then
         assertTrue(flag);
     }
 
     @Test
-    @DisplayName("아이디가 중복이면 가입에 실패한다")
-    void existsByIdTest() {
+    @DisplayName("계정명이 newjeans인 회원은 중복확인 결과가 false이다.")
+    void existsTest2() {
         //given
-//        Member member = Member.builder()
-//                .account("zzz1234")
-//                .password("zzz1234")
-//                .name("최형배")
-//                .email("zzz5678@gmail.com")
-//                .build();
+        String acc = "newjeans";
         //when
-        boolean flag = memberMapper.existsById("account", "zzz1234");
-        //then
-        assertTrue(flag);
-    }
-
-    @Test
-    @DisplayName("아이디가 중복이면 가입에 실패한다")
-    void existsByIdTest2() {
-        //given
-//        Member member = Member.builder()
-//                .account("zzz1234")
-//                .password("zzz1234")
-//                .name("최형배")
-//                .email("zzz5678@gmail.com")
-//                .build();
-        //when
-        boolean flag = memberMapper.existsById("account", "zzz5678");
+        boolean flag = memberMapper.existsById("account", acc);
         //then
         assertFalse(flag);
     }
 
-    @Test
-    @DisplayName("회원 아이디를 입력하면 그 회원의 정보를 알수있다")
-    void findOneTest() {
-        //given
-
-        //when
-        Member member = memberMapper.findOne("zzz1234");
-        //then
-        assertEquals("최익현", member.getName());
-    }
 
     @Test
     @DisplayName("평문의 암호를 인코딩하여야 한다.")
@@ -83,8 +79,10 @@ class MemberMapperTest {
         //given
         String rawPassword = "abc1234";
         //when
-        encoder.encode(rawPassword);
+        String encodedPassword = encoder.encode(rawPassword);
         //then
+        System.out.println("encodedPassword = " + encodedPassword);
     }
+
 
 }

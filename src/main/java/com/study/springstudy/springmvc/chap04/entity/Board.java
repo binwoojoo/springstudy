@@ -6,40 +6,39 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
-@Setter
-@Getter
-@ToString
+
+/*
+    CREATE TABLE tbl_board (
+        board_no INT(8) PRIMARY KEY auto_increment,
+        title VARCHAR(200) NOT NULL,
+        content TEXT,
+        writer VARCHAR(100) NOT NULL,
+        view_count INT(8) DEFAULT 0,
+        reg_date_time DATETIME DEFAULT current_timestamp
+    );
+ */
+
+@Setter @Getter @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-// db와 연결된 정보
 public class Board {
-    private int boardNo;
-    private String title;
-    private String content;
-    private String writer;
-    private int viewCount;
-    private LocalDateTime regDateTime;
+
+    private int boardNo; // 게시글 번호
+    private String title; // 글제목
+    private String content; // 글내용
+    private String writer; // 작성자명
+    private int viewCount; // 조회수
+    private LocalDateTime regDateTime; // 작성일시
     private String account; // 글쓴이 계정명
 
     public Board(ResultSet rs) throws SQLException {
         this.boardNo = rs.getInt("board_no");
-        this.title = rs.getString("title");
-        this.content = rs.getString("content");
         this.writer = rs.getString("writer");
+        this.content = rs.getString("content");
+        this.title = rs.getString("title");
         this.viewCount = rs.getInt("view_count");
         this.regDateTime = rs.getTimestamp("reg_date_time").toLocalDateTime();
-
     }
-
-
-//    public Board(BoardDto dto) {
-//        this.title = dto.getTitle();
-//        this.writer = dto.getWriter();
-//        this.content = dto.getContent();
-//        this.boardNo = getBoardNo();
-//        this.regDateTime = LocalDateTime.now();
-//        this.viewCount = getViewCount();
-//    }
 }

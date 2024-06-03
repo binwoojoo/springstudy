@@ -1,3 +1,4 @@
+
 import { fetchInfScrollReplies, setupInfiniteScroll } from "./getReply.js";
 import { fetchReplyPost } from "./postReply.js";
 import { removeReplyClickEvent } from "./deleteReply.js";
@@ -19,11 +20,13 @@ document.getElementById('replyAddBtn').addEventListener('click', e => {
   fetchReplyPost();
 });
 
+// 댓글 삭제 이벤트 등록
+removeReplyClickEvent();
+modifyReplyClickEvent();
+
 // 댓글 페이지 클릭이벤트 등록
 // replyPageClickEvent();
 
-// 댓글 삭제 이벤트 등록
-removeReplyClickEvent();
 
-// 댓글 수정 이벤트 등록
-modifyReplyClickEvent();
+
+

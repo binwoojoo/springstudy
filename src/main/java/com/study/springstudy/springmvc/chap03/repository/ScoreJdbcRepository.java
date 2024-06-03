@@ -1,6 +1,9 @@
 package com.study.springstudy.springmvc.chap03.repository;
 
 import com.study.springstudy.springmvc.chap03.entity.Score;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,6 +23,7 @@ public class ScoreJdbcRepository implements ScoreRepository {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public boolean save(Score score) {
@@ -153,7 +157,7 @@ public class ScoreJdbcRepository implements ScoreRepository {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                return new int[]{
+                return new int[] {
                         rs.getInt("rank"),
                         rs.getInt("cnt")
                 };

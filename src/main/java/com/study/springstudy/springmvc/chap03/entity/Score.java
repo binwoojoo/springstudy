@@ -1,7 +1,7 @@
 package com.study.springstudy.springmvc.chap03.entity;
 
-import com.study.springstudy.springmvc.chap03.dto.ScorePostDto;
 import com.study.springstudy.springmvc.chap03.dto.ScoreModifyRequestDto;
+import com.study.springstudy.springmvc.chap03.dto.ScorePostDto;
 import lombok.AllArgsConstructor;
 
 import java.sql.ResultSet;
@@ -47,6 +47,8 @@ public class Score {
         this.math = dto.getMath();
         calculate();
     }
+
+
 
     private void calculate() {
         this.total = kor + eng + math;

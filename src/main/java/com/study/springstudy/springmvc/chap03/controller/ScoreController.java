@@ -2,9 +2,9 @@ package com.study.springstudy.springmvc.chap03.controller;
 
 import com.study.springstudy.springmvc.chap03.dto.ScoreDetailResponseDto;
 import com.study.springstudy.springmvc.chap03.dto.ScoreListResponseDto;
+import com.study.springstudy.springmvc.chap03.dto.ScoreModifyRequestDto;
 import com.study.springstudy.springmvc.chap03.dto.ScorePostDto;
 import com.study.springstudy.springmvc.chap03.service.ScoreService;
-import com.study.springstudy.springmvc.chap03.dto.ScoreModifyRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +35,6 @@ import java.util.List;
 public class ScoreController {
 
     // 의존객체 설정
-//    private final ScoreRepository repository;
     private final ScoreService service;
 
 //     @Autowired
@@ -67,7 +66,7 @@ public class ScoreController {
     }
 
     @GetMapping("/remove")
-    public String remove(long stuNum) {
+    public String remove(@RequestParam("sn") long stuNum) {
         System.out.println("/score/remove : GET!");
 
         service.deleteScore(stuNum);
@@ -83,32 +82,33 @@ public class ScoreController {
         // 1. 상세조회를 원하는 학번을 읽기
         // 2. DB에 상세조회 요청
         // 3. DB에서 조회한 회원정보 JSP에게 전달
-//        model.addAttribute("s", score);
         // 4. rank 조회
-//        System.out.println("rank = " + rank);
-//        model.addAttribute("rank", result[0]);
-//        model.addAttribute("count", result[1]);
-        ScoreDetailResponseDto score = service.retrieve(stuNum);
+        ScoreDetailResponseDto dto = service.retrieve(stuNum);
 
-        model.addAttribute("s", score);
+        model.addAttribute("s", dto);
+
         return "score/score-detail";
     }
 
-    // 수정화면 열기 요청
+
+    // 수정 화면 열기 요청
     @GetMapping("/modify")
     public String modify(long stuNum, Model model) {
         ScoreDetailResponseDto dto = service.retrieve(stuNum);
         model.addAttribute("s", dto);
-
         return "score/score-modify";
     }
 
     // 수정 데이터 반영 요청
     @PostMapping("/modify")
     public String modify(ScoreModifyRequestDto dto) {
-        // 1. 수정을 원하는 새로운 데이터 읽기
-        // 2. 데이터 베이스에게 수정 요청
+        // 1. 수정을 원하는 새로운 데이터 읽기 (국영수점수 + 학번)
+        System.out.println("dto = " + dto);
+        // 2. 서비스에게 수정 위임
         service.update(dto);
-        return "redirect:/score/detail?stuNum=" + dto.getStuNum();
+
+        return "redirect:/score/detail?stuNum=" + dto.getStuNum(); // 상세조회로 리다이렉트
     }
+
+
 }

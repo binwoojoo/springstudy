@@ -20,12 +20,12 @@ public interface ReplyMapper {
     boolean delete(long replyNo);
 
     // 특정 게시물에 달린 댓글 목록 조회
-    List<Reply> findAll(@Param("bno") long boardNo
-                      , @Param("p") Page page);
+    List<Reply> findAll(@Param("bno") long boardNo,
+                        @Param("p") Page page);
 
     // 총 댓글 수 조회
     int count(long boardNo);
 
-    // 댓글 번호로 원본 글 번호 찾기
+    // 댓글번호로 원본글번호 찾기
     long findBno(long rno);
 }

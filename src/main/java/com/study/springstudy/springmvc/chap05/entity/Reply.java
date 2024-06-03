@@ -1,18 +1,19 @@
 package com.study.springstudy.springmvc.chap05.entity;
 
 /*
+-- 댓글 테이블 생성
 CREATE TABLE tbl_reply (
-    reply_no INT(8) primary key auto_increment,
+	reply_no INT(8) PRIMARY KEY auto_increment,
     reply_text VARCHAR(1000) NOT NULL,
     reply_writer VARCHAR(100) NOT NULL,
-    reply_date datetime default current_timestamp,
+    reply_date DATETIME default current_timestamp,
     board_no INT(8),
     constraint fk_reply
-    FOREIGN KEY (board_no)
+    foreign key (board_no)
     references tbl_board (board_no)
     on delete cascade
 );
-*/
+ */
 
 import lombok.*;
 
@@ -26,6 +27,7 @@ import java.time.LocalDateTime;
 public class Reply {
 
     private long replyNo;
+    @Setter
     private String replyText;
     private String replyWriter;
     private LocalDateTime replyDate;

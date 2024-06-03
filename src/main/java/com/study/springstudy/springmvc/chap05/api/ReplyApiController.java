@@ -3,6 +3,7 @@ package com.study.springstudy.springmvc.chap05.api;
 import com.study.springstudy.springmvc.chap04.common.Page;
 import com.study.springstudy.springmvc.chap05.dto.request.ReplyModifyDto;
 import com.study.springstudy.springmvc.chap05.dto.request.ReplyPostDto;
+import com.study.springstudy.springmvc.chap05.dto.response.ReplyDetailDto;
 import com.study.springstudy.springmvc.chap05.dto.response.ReplyListDto;
 import com.study.springstudy.springmvc.chap05.service.ReplyService;
 import lombok.RequiredArgsConstructor;
@@ -106,11 +107,23 @@ public class ReplyApiController {
     }
 
     // 댓글 수정 요청
-//    @PatchMapping // 전체수정
-//    @PutMapping // 일부수정
-    @RequestMapping(value = "", method = {RequestMethod.PUT, RequestMethod.PATCH})
-    public ResponseEntity<?> modify(@Validated @RequestBody ReplyModifyDto dto,
-                                    BindingResult result) {
+//    @PutMapping   // 전체수정
+//    @PatchMapping // 일부수정
+
+    /*
+        let obj = {
+            age : 3
+        }
+
+        PUT  -   obj = { age: 10 };
+        PATCH -  obj.age = 10;
+     */
+
+    @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH})
+    public ResponseEntity<?> modify(
+            @Validated @RequestBody ReplyModifyDto dto
+            , BindingResult result
+    ) {
 
         log.info("/api/v1/replies : PUT, PATCH");
         log.debug("parameter: {}", dto);
@@ -125,8 +138,8 @@ public class ReplyApiController {
 
         ReplyListDto replyListDto = replyService.modify(dto);
 
-        return ResponseEntity
-                .ok()
-                .body(replyListDto);
+        return ResponseEntity.ok().body(replyListDto);
+
     }
+
 }

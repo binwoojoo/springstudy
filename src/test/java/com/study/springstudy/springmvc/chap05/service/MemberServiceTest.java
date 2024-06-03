@@ -2,79 +2,81 @@ package com.study.springstudy.springmvc.chap05.service;
 
 import com.study.springstudy.springmvc.chap05.dto.request.LoginDto;
 import com.study.springstudy.springmvc.chap05.dto.request.SignUpDto;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class MemberServiceTest {
 
     @Autowired
     MemberService memberService;
-    @Autowired
-    RedirectAttributes ra;
+
 
     @Test
     @DisplayName("회원가입을 하면 비밀번호가 인코딩된다.")
     void joinTest() {
         //given
         SignUpDto dto = SignUpDto.builder()
-                .account("xxx1234")
-                .password("zzz1234")
-                .email("xxx1234@gmail.com")
-                .name("김쿠키")
+                .account("kitty")
+                .password("kkk1234!")
+                .email("sanrio@gmail.com")
+                .name("헬로키티")
                 .build();
         //when
         boolean flag = memberService.join(dto);
 
         //then
         assertTrue(flag);
-
     }
+
 
     @Test
     @DisplayName("id가 존재하지 않는 경우를 테스트한다.")
     void noAccTest() {
         //given
         LoginDto dto = LoginDto.builder()
-                .account("asdasdsad")
+                .account("kitty123")
+                .password("dfjslfdjsfk")
                 .build();
         //when
-        LoginResult result = memberService.authenticate(dto,ra);
+        LoginResult result = memberService.authenticate(dto);
         //then
         assertEquals(LoginResult.NO_ACC, result);
     }
 
     @Test
-    @DisplayName("pw가 존재하지 않는 경우를 테스트한다.")
+    @DisplayName("pw가 틀린 경우를 테스트한다.")
     void noPwTest() {
         //given
         LoginDto dto = LoginDto.builder()
-                .account("xxx1234")
-                .password("dasdsaa")
+                .account("kitty")
+                .password("dfjslfdjsfk")
                 .build();
         //when
-        LoginResult result = memberService.authenticate(dto,ra);
+        LoginResult result = memberService.authenticate(dto);
         //then
         assertEquals(LoginResult.NO_PW, result);
     }
 
     @Test
     @DisplayName("로그인이 성공하는 경우를 테스트한다.")
-    void loginSuccessTest() {
+    void successTest() {
         //given
         LoginDto dto = LoginDto.builder()
-                .account("xxx1234")
-                .password("zzz1234")
+                .account("kitty")
+                .password("kkk1234!")
                 .build();
         //when
         LoginResult result = memberService.authenticate(dto);
         //then
         assertEquals(LoginResult.SUCCESS, result);
     }
+
+
+
 }

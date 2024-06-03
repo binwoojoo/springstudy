@@ -45,6 +45,7 @@ public class ReplyService {
                 .boardNo(dto.getBno())
                 .build();
 
+
         boolean flag = replyMapper.save(reply);
         if (flag) log.info("댓글 등록 성공!! - {}", dto);
         else log.warn("댓글 등록 실패");
@@ -57,7 +58,7 @@ public class ReplyService {
 
         replyMapper.modify(dto.toEntity());
 
-        return getReplies(dto.getBno(),new Page(1,10));
+        return getReplies(dto.getBno(), new Page(1, 10));
     }
 
     // 댓글 삭제
@@ -69,4 +70,6 @@ public class ReplyService {
         // 삭제 후 삭제된 목록을 리턴
         return flag ? getReplies(bno, new Page(1, 10)) : null;
     }
+
+
 }

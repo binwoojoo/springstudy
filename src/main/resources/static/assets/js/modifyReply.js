@@ -25,6 +25,7 @@ export function modifyReplyClickEvent() {
     document.querySelector('.modal').dataset.rno = rno;
   });
 
+
   // 수정 요청 처리 이벤트
   document.getElementById('replyModBtn').addEventListener('click', e => {
     fetchReplyModify();
@@ -53,10 +54,10 @@ async function fetchReplyModify() {
   if (!res.ok) {
     alert('수정 실패!');
   }
-  
+
   // 모달 닫기
   document.getElementById('modal-close').click();
 
-  window.scrollTo(0, 500); // 수정 후 페이지 상단으로 이동
-  await fetchInfScrollReplies();
+  window.scrollTo(0, 800); // 수정 후 페이지 상단으로 이동
+  await fetchInfScrollReplies(); 
 }

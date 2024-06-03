@@ -4,9 +4,9 @@ import com.study.springstudy.springmvc.chap05.entity.Member;
 import lombok.*;
 
 @Getter @ToString
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class LoginUserInfoDto {
 
@@ -16,11 +16,11 @@ public class LoginUserInfoDto {
     private String email;
     private String auth;
 
-
     public LoginUserInfoDto(Member member) {
         this.account = member.getAccount();
         this.email = member.getEmail();
         this.nickName = member.getName();
         this.auth = member.getAuth().name();
     }
+
 }
