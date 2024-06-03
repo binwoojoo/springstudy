@@ -21,7 +21,9 @@ public class AutoLoginInterceptor implements HandlerInterceptor {
     private final MemberMapper memberMapper;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request,
+                             HttpServletResponse response,
+                             Object handler) throws Exception {
 
         // 1. 사이트에 들어오면 자동로그인 쿠키를 가지고 있는지 확인
         Cookie autoLoginCookie
