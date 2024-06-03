@@ -1,6 +1,5 @@
 package com.study.springstudy.springmvc.chap04.controller;
 
-import com.study.springstudy.springmvc.chap04.common.Page;
 import com.study.springstudy.springmvc.chap04.common.PageMaker;
 import com.study.springstudy.springmvc.chap04.common.Search;
 import com.study.springstudy.springmvc.chap04.dto.BoardDetailResponseDto;
@@ -13,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -78,14 +78,15 @@ public class BoardController {
     @GetMapping("/detail")
     public String detail(int bno,
                          Model model,
-                         HttpServletRequest request) {
+                         HttpServletRequest request,
+                         HttpServletResponse response) {
         System.out.println("/board/detail GET");
 
         // 1. 상세조회하고 싶은 글번호를 읽기
         System.out.println("bno = " + bno);
 
         // 2. 데이터베이스로부터 해당 글번호 데이터 조회하기
-        BoardDetailResponseDto dto = service.detail(bno);
+        BoardDetailResponseDto dto = service.detail(bno,request, response);
 
         // 3. JSP파일에 조회한 데이터 보내기
         model.addAttribute("bbb", dto);

@@ -11,18 +11,17 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import java.time.LocalDateTime;
 
 import static com.study.springstudy.springmvc.chap05.service.LoginResult.*;
-import static com.study.springstudy.springmvc.util.LoginUtil.*;
+import static com.study.springstudy.springmvc.util.LoginUtil.AUTO_LOGIN_COOKIE;
+import static com.study.springstudy.springmvc.util.LoginUtil.LOGIN;
 
 @Service
 @RequiredArgsConstructor
@@ -91,7 +90,6 @@ public class MemberService {
                             .build()
             );
         }
-
 
         maintainLoginState(session, foundMember);
 
