@@ -69,6 +69,19 @@
                     height: 200px;
                 }
 
+                .reaction {
+                    display: flex;
+                    justify-content: center;
+                }
+
+                #dislike-btn {
+                    background-color: rgb(207, 0, 0);
+                }
+
+                #dislike-btn:hover {
+                    background-color: rgb(130, 0, 0);
+                }
+                
                 .buttons {
                     display: flex;
                     justify-content: flex-end;
@@ -144,6 +157,10 @@
                 <label for="content">내용</label>
                 <div id="content">
                     ${bbb.content}
+                </div>
+                <div class="reaction">
+                    <button id="like-btn" type="button">좋아요 <span class="like-num">0</span></button>
+                    <button id="dislike-btn" type="button">싫어요 <span class="like-num">0</span></button>
                 </div>
                 <div class="buttons">
                     <button class="list-btn" type="button" onclick="window.location.href='${ref}'">목록</button>
@@ -248,6 +265,7 @@
 
 
             <script type="module" src="/assets/js/reply.js"></script>
+            <script src="/assets/js/reaction.js"></script>
 
         </body>
 

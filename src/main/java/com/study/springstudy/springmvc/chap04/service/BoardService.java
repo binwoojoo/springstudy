@@ -113,6 +113,9 @@ public class BoardService {
         if (shouldIncrease) {
             boardMapper.upViewCount(boardNo);
         }
+
+        // 좋아요 싫어요 수도 같이 가져와야함 보드 테이블에 컬럼 추가
+        
         return new BoardDetailResponseDto(b);
 
     }

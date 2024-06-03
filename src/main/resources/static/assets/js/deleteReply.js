@@ -30,7 +30,7 @@ export function removeReplyClickEvent() {
     // console.log('삭제버튼 클릭!');
     const rno = e.target.closest('#replyContent').dataset.replyId;
     fetchDeleteReply(rno);
-
+    
   });
 
 }
