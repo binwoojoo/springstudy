@@ -56,9 +56,9 @@
                         <!-- 댓글 쓰기 영역 -->
                         <div class="card">
                             <div class="card-body">
-
+                                
                                 <c:if test="${empty login}">
-                                    <a href="/members/sign-in">댓글은 로그인 후 작성해주세요!!</a>
+                                    <a href="/members/sign-in?message=login-required&redirect=/board/detail?bno=${bbb.boardNo}">댓글은 로그인 후 작성해주세요!!</a>
                                 </c:if>
 
                                 <c:if test="${not empty login}">

@@ -19,11 +19,13 @@ public class ApiAuthInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         HttpSession session = request.getSession();
-
-        if(!LoginUtil.isLoggedIn(session)) {
+        String requestURI = request.getRequestURI();
+        
+        if (!LoginUtil.isLoggedIn(session)) {
             // 로그인을 하지않은 경우 403상태코드를 전송
-            log.info("인가되지 않은 접근입니다. : {}",request.getRequestURI());
-            response.sendError(403);
+            log.info("인가되지 않은 접근입니다. : {}", requestURI);
+//            response.sendRedirect("/members/sign-in?message=login-required&redirect=" + requestURI);
+//            response.sendError(403);
             return false;
         }
         return true;
