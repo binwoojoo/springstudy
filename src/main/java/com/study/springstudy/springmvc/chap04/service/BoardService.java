@@ -79,7 +79,7 @@ public class BoardService {
         // 상세 조회시 초기렌더링에 그려질 데이터
         BoardDetailResponseDto responseDto = new BoardDetailResponseDto(b);
         responseDto.setLikeCount(reactionMapper.countLikes((long) bno));
-        responseDto.setDislikeCount(reactionMapper.countDislikes((long) bno));
+        responseDto.setDisLikeCount(reactionMapper.countDislikes((long) bno));
 
         Reaction reaction = reactionMapper.findOne((long) bno,currentUserAccount);
 

@@ -36,7 +36,7 @@
                         class="dislike-btn"
                       >
                         <i class="fas fa-thumbs-down"></i> 싫어요
-                        <span id="dislike-count">${bbb.dislikeCount}</span>
+                        <span id="dislike-count">${bbb.disLikeCount}</span>
                       </button>
                     </div>
             
@@ -175,10 +175,10 @@
                         return;
                     }
 
-                    const { likeCount, dislikeCount, userReaction } = await res.json();
+                    const { likeCount, disLikeCount, userReaction } = await res.json();
 
                     document.getElementById('like-count').textContent = likeCount;
-                    document.getElementById('dislike-count').textContent = dislikeCount;
+                    document.getElementById('dislike-count').textContent = disLikeCount;
 
                     // console.log(json);
                     // 버튼 활성화 스타일 처리
