@@ -7,9 +7,9 @@
 
     <insert id="save">
         INSERT INTO tbl_reply
-            (reply_text, reply_writer, board_no)
+            (reply_text, reply_writer, board_no, account)
         VALUES
-            (#{replyText}, #{replyWriter}, #{boardNo})
+            (#{replyText}, #{replyWriter}, #{boardNo}, #{account})
     </insert>
 
     <update id="modify">
@@ -26,7 +26,7 @@
     <select id="findAll" resultType="reply">
         SELECT * FROM tbl_reply
         WHERE board_no = #{bno}
-        ORDER BY reply_no
+        ORDER BY reply_no desc
         LIMIT #{p.pageStart}, #{p.amount}
     </select>
 

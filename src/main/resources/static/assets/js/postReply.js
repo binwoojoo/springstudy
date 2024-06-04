@@ -7,12 +7,14 @@ export const fetchReplyPost = async () => {
 
   const textInput = document.getElementById('newReplyText');
   const writerInput = document.getElementById('newReplyWriter');
+  const writerAccount = document.getElementById('newReplyWriter').value;
 
   // 서버로 보낼 데이터
   const payload = {
     text: textInput.value,
     author: writerInput.value,
-    bno: document.getElementById('wrap').dataset.bno
+    bno: document.getElementById('wrap').dataset.bno,
+    account: writerAccount
   };
   console.log(payload);
 
@@ -27,7 +29,7 @@ export const fetchReplyPost = async () => {
   const replies = await res.json();
 
   textInput.value = '';
-  writerInput.value = '';
+  // writerInput.value = '';
 
   // console.log(replies);
   // renderReplies(replies);

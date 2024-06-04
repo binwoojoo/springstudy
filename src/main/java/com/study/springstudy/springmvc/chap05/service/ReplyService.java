@@ -43,8 +43,8 @@ public class ReplyService {
                 .replyText(dto.getText())
                 .replyWriter(dto.getAuthor())
                 .boardNo(dto.getBno())
+                .account(dto.getAccount())
                 .build();
-
 
         boolean flag = replyMapper.save(reply);
         if (flag) log.info("댓글 등록 성공!! - {}", dto);
