@@ -26,6 +26,6 @@ public class ReplyPostDto {
     private String author; // 댓글 작성자
     @NotNull
     private Long bno; // 원본 글번호
-    @NotNull
-    private String account; // 작성자 계정명
+//    @NotNull
+//    private String account; // 작성자 계정명
 }

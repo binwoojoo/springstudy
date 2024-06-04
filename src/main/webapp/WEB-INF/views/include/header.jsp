@@ -5,7 +5,7 @@
 <header>
   <div class="inner-header">
     <h1 class="logo">
-      <a href="/board/list">
+      <a href="/">
         <img src="/assets/img/스펀지.webp" alt="로고이미지">
       </a>
     </h1>
