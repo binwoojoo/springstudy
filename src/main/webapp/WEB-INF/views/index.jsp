@@ -7,9 +7,9 @@
 
   <style>
 
-    body {
+    /* body {
       background: url('/assets/img/스펀지.webp') no-repeat center/cover;
-    }
+    } */
   </style>
 </head>
 <body>
