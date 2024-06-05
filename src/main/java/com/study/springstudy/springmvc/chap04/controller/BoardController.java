@@ -33,9 +33,11 @@ public class BoardController {
 
     // 1. 목록 조회 요청 (/board/list : GET)
     @GetMapping("/list")
-    public String list(@ModelAttribute("s") Search page, Model model) {
-        System.out.println("/board/list GET");
-
+    public String list(@ModelAttribute("s") Search page,
+                       @RequestParam(defaultValue = "6") int itemsPerPage,
+                       Model model)
+    {
+        page.setAmount(itemsPerPage);
         // 서비스에게 조회 요청 위임
         List<BoardListResponseDto> bList = boardService.findList(page);
         // 페이지 정보를 생성하여 JSP에게 전송

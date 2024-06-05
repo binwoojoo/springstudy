@@ -23,7 +23,7 @@ public class BoardDetailResponseDto {
     private String userReaction; // 현재 리액션 상태
 
 //    @Setter
-//    private List<Reply> replies;
+//    private List<y> ies;
 
     public BoardDetailResponseDto(Board b) {
         this.boardNo = b.getBoardNo();

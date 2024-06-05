@@ -6,7 +6,12 @@
         <head>
             <%@ include file="../include/static-head.jsp" %>
             <link rel="stylesheet" href="/assets/css/detail.css">
+            <style>
+               
+
+            </style>
         </head>
+
 
         <body>
 
@@ -31,15 +36,12 @@
                         <i class="fas fa-thumbs-up"></i> 좋아요
                         <span id="like-count">${bbb.likeCount}</span>
                       </button>
-                      <button
-                        id="dislike-btn"
-                        class="dislike-btn"
-                      >
+                      <button id="dislike-btn" class="dislike-btn">
                         <i class="fas fa-thumbs-down"></i> 싫어요
                         <span id="dislike-count">${bbb.disLikeCount}</span>
                       </button>
                     </div>
-            
+                    
                     <button
                       class="list-btn"
                       type="button"
@@ -72,10 +74,21 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
+                                                <div class="profile-box">
+                                                    <c:choose>
+                                                      <c:when test="${login != null && login.profile != null}">
+                                                        <img src="${login.profile}" class="reply-box" alt="profile image">
+                                                      </c:when>
+                                                      <c:otherwise>
+                                                        <img src="/assets/img/anonymous.jpg" class="reply-box" alt="profile image">
+                                                      </c:otherwise>
+                                                    </c:choose>
+                                                </div>
                                                 <label for="newReplyWriter" hidden>댓글 작성자</label>
                                                 <input id="newReplyWriter" name="replyWriter" type="text" value="${login.nickName}" readonly
                                                     class="form-control" placeholder="작성자 이름" style="margin-bottom: 6px;">
                                                 <button id="replyAddBtn" type="button" class="btn btn-dark form-control">등록</button>
+                                              
                                             </div>
                                         </div>
                                     </div>
@@ -213,6 +226,8 @@
                 document.getElementById('dislike-btn').addEventListener('click', e => {
                     sendReaction('dislike');
                 });
+
+              
             </script>
 
         </body>

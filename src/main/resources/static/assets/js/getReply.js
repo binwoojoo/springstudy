@@ -72,7 +72,7 @@ export function renderReplies({ pageInfo, replies }) {
   // 댓글 목록 렌더링
   let tag = "";
   if (replies && replies.length > 0) {
-    replies.forEach(({ reply_no: rno, writer, text, createAt }) => {
+    replies.forEach(({ reply_no: rno, writer, text, createAt, profileImg }) => {
       tag += `
         <div id='replyContent' class='card-body' data-reply-id='${rno}'>
             <div class='row user-block'>
@@ -138,13 +138,24 @@ function appendReplies({ replies, loginUser }) {
   let tag = "";
   if (replies && replies.length > 0) {
     replies.forEach(
-      ({ reply_no: rno, writer, text, createAt, account: replyAccount }) => {
+      ({ reply_no: rno, writer, text, createAt, account: replyAccount , profileImg}) => {
         tag += `
         <div id='replyContent' class='card-body' data-reply-id='${rno}'>
             <div class='row user-block'>
-                <span class='col-md-3'>
-                    <b>${writer}</b>
-                </span>
+                <span class='col-md-3'> 
+                    `;
+                      if(profileImg !== null)
+                        { tag += `<div class="profile-box">
+                          <img src="${profileImg}" class="reply-img" alt="profile image">
+                          <b>${writer}</b>
+                          </div>`
+                        } else{
+                          tag += `<div class="profile-box">
+                          <img src="/assets/img/anonymous.jpg" class="reply-img" alt="profile image">
+                          <b>${writer}</b>
+                          </div>`
+                        }
+               tag +=`</span>
                 <span class='offset-md-6 col-md-3 text-right'><b>${getRelativeTime(
                   createAt
                 )}</b></span>
@@ -156,14 +167,14 @@ function appendReplies({ replies, loginUser }) {
 
         // 관리자이거나 내가 쓴 댓글일 경우만 조건부 렌더링
         // 로그인한 회원 권한, 로그인한 회원 계정명, 해당 댓글의 계정명
-        if(loginUser) {
-        const { auth, account: loginUserAccount } = loginUser;
-        if (auth === 'ADMIN' || replyAccount === loginUserAccount) {
-          tag += `<a id='replyModBtn' class='btn btn-sm btn-outline-dark' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;
+        if (loginUser) {
+          const { auth, account: loginUserAccount } = loginUser;
+          if (auth === "ADMIN" || replyAccount === loginUserAccount) {
+            tag += `<a id='replyModBtn' class='btn btn-sm btn-outline-dark' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;
                 <a id='replyDelBtn' class='btn btn-sm btn-outline-dark' href='#'>삭제</a>
                 `;
+          }
         }
-      }
         tag += `</div>
             </div>
         </div>
@@ -248,3 +259,13 @@ export function setupInfiniteScroll() {
 export function removeInfiniteScroll() {
   window.removeEventListener("scroll", scrollHandler);
 }
+
+  // 프로필 클릭시 이미지 모달 띄우기
+  function makeProfileModal() {
+    const $imgBox = document.getElementByIda('profile-img');
+
+    console.log($imgBox);
+
+  }
+  
+  makeProfileModal();
