@@ -28,6 +28,7 @@
                 <label for="content">내용</label>
                 <div id="content">
                     ${bbb.content}
+                    
                 </div>
                 
                 <div class="buttons">
@@ -153,6 +154,12 @@
                     </div>
                 </div>
 
+                <!-- 프로필 사진 모달 -->
+
+                <div class="modal-box">
+                      <img src="" class="profile-modal-img" alt="profile modal img">
+                </div> 
+                
                 <!-- end replyModifyModal -->
 
                 <!-- 로딩 스피너 -->

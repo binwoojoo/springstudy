@@ -138,24 +138,33 @@ function appendReplies({ replies, loginUser }) {
   let tag = "";
   if (replies && replies.length > 0) {
     replies.forEach(
-      ({ reply_no: rno, writer, text, createAt, account: replyAccount , profileImg}) => {
+      ({
+        reply_no: rno,
+        writer,
+        text,
+        createAt,
+        account: replyAccount,
+        profileImg,
+      }) => {
         tag += `
         <div id='replyContent' class='card-body' data-reply-id='${rno}'>
             <div class='row user-block'>
                 <span class='col-md-3'> 
                     `;
-                      if(profileImg !== null)
-                        { tag += `<div class="profile-box">
-                          <img src="${profileImg}" class="reply-img" alt="profile image">
+        if (profileImg !== null) {
+          tag += `<div class="profile-box">
+                          <img src="${profileImg}" class="reply-img"  alt="profile image">
                           <b>${writer}</b>
-                          </div>`
-                        } else{
-                          tag += `<div class="profile-box">
+
+                          
+                  </div>`;
+        } else {
+          tag += `<div class="profile-box">
                           <img src="/assets/img/anonymous.jpg" class="reply-img" alt="profile image">
                           <b>${writer}</b>
-                          </div>`
-                        }
-               tag +=`</span>
+                          </div>`;
+        }
+        tag += `</span>
                 <span class='offset-md-6 col-md-3 text-right'><b>${getRelativeTime(
                   createAt
                 )}</b></span>
@@ -186,6 +195,19 @@ function appendReplies({ replies, loginUser }) {
   }
   document.getElementById("replyData").innerHTML += tag;
   console.log("append replies");
+
+  // 클릭한 프로필 이미지 src 가져오기
+  let $imgs = document.querySelectorAll(".reply-img");
+  $imgs.forEach((e) =>
+    e.addEventListener("click", (e) => {
+      const src = e.target.getAttribute("src");
+      console.log(src);
+      const $modalImg = document.querySelector(".profile-modal-img");
+      const modal = document.querySelector('.modal-box');
+      console.log(modal);
+      $modalImg.setAttribute("src", src);
+    })
+  );
 
   // 로드된 댓글 수 업데이트
   loadedReplies += replies.length;
@@ -259,13 +281,3 @@ export function setupInfiniteScroll() {
 export function removeInfiniteScroll() {
   window.removeEventListener("scroll", scrollHandler);
 }
-
-  // 프로필 클릭시 이미지 모달 띄우기
-  function makeProfileModal() {
-    const $imgBox = document.getElementByIda('profile-img');
-
-    console.log($imgBox);
-
-  }
-  
-  makeProfileModal();

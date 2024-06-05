@@ -166,7 +166,7 @@ button.list-btn {
 
 /* 프로필 css */
 
-.profile-box .reply-box{
+.profile-box .reply-box {
   justify-content: center;
   display: flex;
   margin: 10px auto;
@@ -180,7 +180,7 @@ button.list-btn {
   width: 100%;
 }
 
-.profile-box .reply-img{
+.profile-box .reply-img {
   display: flex inline-block;
   width: 35px;
   height: 35px;
@@ -193,4 +193,15 @@ button.list-btn {
   width: 35px;
   height: 35px;
   cursor: pointer;
+}
+
+.modal-box {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
 }
